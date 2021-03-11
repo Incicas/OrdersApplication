@@ -1,5 +1,6 @@
 package com.bestapp.ordersapp.authentication.model.persitance;
 
+import com.bestapp.ordersapp.restaurants.model.persistence.RestaurantEntity;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,6 +20,15 @@ public class UserEntity {
     private String email;
     private String password;
     private Role role;
+
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private RestaurantEntity restaurantEntity;
+
+    public UserEntity(String email, String password, Role role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public Role getRole() {
         return role;
@@ -70,7 +80,6 @@ public class UserEntity {
                 ", password='" + password + '\'' +
                 ", created_on=" + created_on + '\'' +
                 ", role='" + role + '\'' +
-
                 '}';
     }
 }
