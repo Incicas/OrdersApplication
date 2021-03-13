@@ -36,6 +36,7 @@ public class RestaurantController {
                 restaurantDTO.getPassword(),
                 Role.ROLE_CUSTOMER);
         userService.createUser(userEntity);
+
         RestaurantEntity restaurantEntity = new RestaurantEntity(
                 userEntity,
                 restaurantDTO.getName(),
@@ -53,17 +54,19 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurantService.getAll());
 
     }
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<RestaurantEntity> getRestaurantsById(@PathVariable Long id){
         return ResponseEntity.ok(restaurantService.getRestaurantById(id));
 
     }
     @DeleteMapping("/{id}")
     public ResponseEntity deleteRestaurant(@PathVariable Long id){
+
         userService.deleteUser(restaurantService.getRestaurantById(id).getUserEntity());
+
         return ResponseEntity.ok().build();
 
     }
 
-    
+
 }
