@@ -7,6 +7,7 @@ import com.bestapp.ordersapp.authentication.service.UserService;
 import com.bestapp.ordersapp.customers.model.dto.CustomerDTO;
 import com.bestapp.ordersapp.customers.model.persistence.CustomerEntity;
 import com.bestapp.ordersapp.customers.service.CustomerService;
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
