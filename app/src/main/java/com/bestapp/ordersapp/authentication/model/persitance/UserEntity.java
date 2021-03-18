@@ -1,5 +1,6 @@
 package com.bestapp.ordersapp.authentication.model.persitance;
 
+import com.bestapp.ordersapp.customers.model.persistence.CustomerEntity;
 import com.bestapp.ordersapp.restaurants.model.persistence.RestaurantEntity;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,6 +24,8 @@ public class UserEntity {
 
     @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private RestaurantEntity restaurantEntity;
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private CustomerEntity customerEntity;
 
     public UserEntity(String email, String password, Role role) {
         this.email = email;
