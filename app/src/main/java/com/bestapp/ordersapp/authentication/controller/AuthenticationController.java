@@ -49,11 +49,4 @@ public class AuthenticationController {
         return ResponseEntity.ok(new JWTokenDTO(jwt));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserEntity user) {
-        userService.createUser(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
-
 }
